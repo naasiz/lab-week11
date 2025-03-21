@@ -46,11 +46,7 @@ ssh -i ~/.ssh/aws rocky@<Rocky-Server-Public-IP>
 ```bash
 cd ansible
 ```
-2. Install the required Ansible dependencies (if missing):
-```bash
-ansible-galaxy collection install amazon.aws
-```
-3. Confirm inventory file is correctly configured by running:
+2. Confirm inventory file is correctly configured by running:
 ```bash
 ansible-inventory -i inventory/aws_ec2.yml --list
 ```
@@ -65,19 +61,14 @@ ansible-inventory -i inventory/aws_ec2.yml --list
 
 ### **Step 7: Run Ansible Playbook**
 ```bash
-ansible-playbook -i inventory/aws_ec2.yml playbook.yml
+ansible-playbook playbook.yml
 ```
 
 ### **Step 8: Verify Nginx Web Page**
 - Open the following link in your browser to confirm the web page is served correctly:  
 **[http://44.246.118.36/](http://44.246.118.36/)**
 
-### **Step 9: Capture the Victory Screenshot**
-Captured the screenshot of the successfully served webpage (shown below).
-
----
-
-## **Victory Screenshot**
+### **Step 9: the Victory Screenshot**
 ![Screenshot 2025-03-21 151151](https://github.com/user-attachments/assets/138de95d-61a1-4dc9-ad63-f7f310505936)
 
 
