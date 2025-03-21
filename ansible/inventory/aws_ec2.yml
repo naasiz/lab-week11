@@ -1,0 +1,27 @@
+plugin: amazon.aws.aws_ec2
+regions:
+  - us-west-2
+# Set individual Variables
+compose:
+  ansible_host: public_dns_name
+  ansible_user: "{{ 'rocky' if 'server_role_redis_server' in group_names else 'ubuntu' }}"
+  ansible_ssh_private_key_file: ~/.ssh/aws
+# Set the Inventory Hostname to be the EC2 Tag Name value without any prefix or separator
+hostnames:
+  - name: tag:Name
+    separator: ""
+    prefix: ""
+# Create groups
+keyed_groups:
+  # Create a group for each Name Tag (alternative to setting the hostname above)
+  - key: tags.group
+    prefix: "group"
+    separator: "_"
+  # Create group for each separate Project Tag
+  - key: tags.Project
+    prefix: "project"
+    separator: "_"
+  # Create a group for each separate Role Tag
+  - key: tags.Role
+    prefix: "server_role"
+    separator: "_"
